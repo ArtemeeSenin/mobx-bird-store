@@ -14,6 +14,10 @@ class App extends Component {
         this.bird.value = '';
     };
 
+    handleRemove = (bird) => {
+        this.props.BirdStore.removeBird(bird);
+    };
+
     render() {
         const {BirdStore} = this.props;
         return (
@@ -28,8 +32,8 @@ class App extends Component {
                 </form>
 
                 <ul>
-                    { BirdStore.birds.map( bird => (
-                        <li key={bird}>{ bird }</li>
+                    { BirdStore.birds.map( (bird, id) => (
+                        <li key={id} onClick={ this.handleRemove.bind(this, bird) }>{id}{ bird }</li>
                     ))}
                 </ul>
             </div>

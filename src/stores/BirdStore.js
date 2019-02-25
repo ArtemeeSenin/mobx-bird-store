@@ -7,6 +7,10 @@ class BirdStore {
         this.birds.push(bird);
     };
 
+    @action removeBird = birdToRemove => {
+        this.birds.splice( this.birds.indexOf(birdToRemove), 1);
+    };
+
     @computed get birdCount() {
         return this.birds.length;
     }
